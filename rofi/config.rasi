@@ -1,0 +1,57 @@
+* {
+		background-color: #0000;
+    foreground-color: #C0C0C0;
+		font: "Roboto 12";
+}
+
+#window {
+    width: 100%;
+    height: 100%;
+    padding: 310px 500px;
+}
+
+#mainbox {
+}
+
+#inputbar {
+    background-color: #D5D5D5EE;
+    border-radius: 5px;
+    margin: 0 0 -6px 0;
+    padding: 15px;
+    children: [prompt, spacer, entry, case-indicator];
+}
+
+#prompt {
+		padding: 4px 0 0 0;
+		text-color: #5A5A5A;
+		font: "Font Awesome 5 Free 20";
+}
+
+#spacer {
+		expand: false;
+		margin: 0px 0.5em 0em 0em;
+		font: "Roboto 20";
+}
+
+#entry {
+		text-color: #323232;
+		font: "Roboto 20";
+}
+
+#listview {
+		cycle: false;
+		spacing: 0;
+		dynamic: true;
+}
+
+#element {
+		border: 0;
+		padding: 5px 0px 5px 20px;
+    background-color: #D5D5D5EE;
+		text-color: @foreground;
+}
+
+#element.selected {
+		background-color: #025CBF;
+		text-color: @foreground-color;
+}
