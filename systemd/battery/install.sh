@@ -1,16 +1,22 @@
 #!/bin/bash
 
-GITURL="https://raw.githubusercontent.com/armandmgt/dotfiles/master/systemd/"
-SCRIPT="battery_notifier.sh"
+GITURL="https://raw.githubusercontent.com/armandmgt/dotfiles/master/systemd/battery/"
+SCRIPT="battery_notify.sh"
 TIMER="battery.timer"
 SERVICE="battery.service"
+PLACE_HOLDER="https://www.fillmurray.com/128/128"
 
-curl -fL $GITURL$SCRIPT > /tmp/$SCRIPT
-if [ $? != 0 ]; then exit 1; fi
-curl -fL $GITURL$TIMER > /tmp/$TIMER
-if [ $? != 0 ]; then exit 1; fi
-curl -fL $GITURL$SERVICE > /tmp/$SERVICE
-if [ $? != 0 ]; then exit 1; fi
+function fetch_file {
+	printf 'Fetching '$1'...'
+	curl -fsL $GITURL$1 > /tmp/$1
+	if [ $? != 0 ]; then echo 'failed'; exit 1; fi
+	echo 'success'
+}
+
+fetch_file $SCRIPT
+fetch_file $TIMER
+fetch_file $SERVICE
+curl -fsL $PLACE_HOLDER > /tmp/fillmurray.png
 
 mkdir -p $HOME/.config/systemd/user/
 mkdir -p $HOME/bin/
@@ -21,3 +27,5 @@ chmod +x $HOME/bin/$SCRIPT
 
 systemctl --user enable $TIMER
 systemctl --user start $TIMER
+
+echo 'Installation successful (you should change the icon in battery_notify.sh)'
