@@ -1,0 +1,5 @@
+[Unit]
+Description=Day time wallpaper mode
+
+[Service]
+ExecStart=%h/bin/battery_notify.sh

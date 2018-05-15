@@ -1,0 +1,10 @@
+[Unit]
+Description=battery notifier
+
+[Timer]
+OnUnitActiveSec=10
+Persistent=true
+Unit=battery.service
+
+[Install]
+WantedBy=default.target
