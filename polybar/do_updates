@@ -1,0 +1,2 @@
+#!/usr/bin/fish
+echo "Updating system..."; yaourt -Syua; and kill -SIGUSR1 polybar; or cat

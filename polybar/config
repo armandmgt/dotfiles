@@ -1,19 +1,19 @@
 
 [colors]
-background = #EECACCCD
-foreground = #191919
+background = #AA101010
+foreground = #FAFAFA
 red-alert = #BD2C30
 
 [bar/light]
-monitor = ${env:MONITOR}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 28
 radius = 0
 bottom = true
 fixed-center = false
 
-font-0 = Noto Sans:size=11;2
-font-1 = Material Icons:size=12;2.5
+font-0 = SFNS Display:size=12;1
+font-1 = Material Icons:size=12;2
 font-2 = Font Awesome 5 Free:style=regular:pixelsize=12;3
 font-3 = Font Awesome 5 Free:style=solid:pixelsize=12;3
 
@@ -112,11 +112,11 @@ label = %time% %date%
 [module/updates]
 type = custom/script
 interval = 3600
-exec-if = [ $(checkupdates | wc -l) -ne "0" ]
-exec = ~/bin/pac_updt
+exec-if = [ $(~/bin/check_updates) -ne "0" ]
+exec = ~/bin/check_updates
 format-underline = #FF4924
 format =  <label>
-click-left = terminator -be "echo \"Updating system...\"; sudo pacman -Syu; or cat"
+click-left = i3-sensible-terminal -e ~/bin/do_updates
 
 [module/powermenu]
 type = custom/menu
